@@ -2,6 +2,7 @@
 
 [![Pub Version](https://img.shields.io/pub/v/universal_back_gesture?label=pub.dev)](https://pub.dev/packages/universal_back_gesture)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 [Русская версия](README_RU.md)
 
 #### A universal, highly customizable back gesture for any custom page transitions.
@@ -11,7 +12,9 @@ Allows customization of the screen area for gesture initiation, swipe distance a
 
 ## Preview:
 
-Online demo: [https://universal-back-gesture.web.app/](https://universal-back-gesture.web.app/)
+![ezgif-157720150ac8c3](https://github.com/user-attachments/assets/7221c5e9-399c-4bda-9f57-f63b8ba7ce1d)
+
+Online demo: [https://thelastflame.github.io/universal-back-gesture](https://thelastflame.github.io/universal-back-gesture)
 
 ## Installation
 
