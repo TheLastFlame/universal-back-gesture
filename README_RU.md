@@ -19,7 +19,10 @@
 
 ## Установка
 
-Выполните команду `flutter pub add universal_back_gesture`.
+Выполните команду 
+```
+flutter pub add universal_back_gesture
+```
 
 ## Использование
 
