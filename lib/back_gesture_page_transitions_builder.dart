@@ -142,7 +142,7 @@ class __BackGestureWrapperState extends State<_BackGestureWrapper> {
         ? velocity > 0
         // Commit if dragged past threshold
         : (1 - controller.value) >=
-              widget.config.animationProgressCompleteThreshold;
+            widget.config.animationProgressCompleteThreshold;
 
     final Duration routeTransitionDuration = widget.route.transitionDuration;
     final Duration commitAnimationDuration =

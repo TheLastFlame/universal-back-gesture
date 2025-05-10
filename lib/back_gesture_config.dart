@@ -7,21 +7,22 @@ class GestureMeasurement {
   final GestureMeasurementType type;
 
   const GestureMeasurement.pixels(this.value)
-    : type = GestureMeasurementType.pixels;
+      : type = GestureMeasurementType.pixels;
 
   const GestureMeasurement.percentage(this.value)
-    : assert(
-        value >= 0.0 && value <= 1.0,
-        'Percentage value must be between 0.0 and 1.0',
-      ),
-      type = GestureMeasurementType.percentage;
+      : assert(
+          value >= 0.0 && value <= 1.0,
+          'Percentage value must be between 0.0 and 1.0',
+        ),
+        type = GestureMeasurementType.percentage;
 
   /// Resolves the value to absolute pixels.
   /// For [GestureMeasurementType.percentage], it's relative to the screen width.
   double resolve(BuildContext context) {
     return switch (type) {
       GestureMeasurementType.pixels => value,
-      GestureMeasurementType.percentage => MediaQuery.widthOf(context) * value,
+      GestureMeasurementType.percentage =>
+        MediaQuery.of(context).size.width * value,
     };
   }
 }
@@ -81,8 +82,8 @@ class BackGestureConfig {
     this.cancelAnimationCurve = Curves.fastOutSlowIn,
     this.cancelAnimationDuration,
   }) : assert(
-         animationProgressCompleteThreshold >= 0.0 &&
-             animationProgressCompleteThreshold <= 1.0,
-         'Animation progress complete threshold must be between 0.0 and 1.0',
-       );
+          animationProgressCompleteThreshold >= 0.0 &&
+              animationProgressCompleteThreshold <= 1.0,
+          'Animation progress complete threshold must be between 0.0 and 1.0',
+        );
 }

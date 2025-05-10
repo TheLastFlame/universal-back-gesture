@@ -46,11 +46,12 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const DemoPage(
-                      title: 'Global PageTransition',
-                      text:
-                          'Simple MaterialPageRoute (with fullscreen back gesture)',
-                    ),
+                    builder:
+                        (context) => const DemoPage(
+                          title: 'Global PageTransition',
+                          text:
+                              'Simple MaterialPageRoute (with fullscreen back gesture)',
+                        ),
                   ),
                 );
               },
@@ -62,11 +63,12 @@ class HomePage extends StatelessWidget {
                   CustomBackGesturePageRoute(
                     parentTransitionBuilder:
                         const CupertinoPageTransitionsBuilder(),
-                    builder: (context) => const DemoPage(
-                      title: 'Cupertino fullscreen back gesture',
-                      text:
-                          'Cupertino page transition with fullscreen back gesture',
-                    ),
+                    builder:
+                        (context) => const DemoPage(
+                          title: 'Cupertino fullscreen back gesture',
+                          text:
+                              'Cupertino page transition with fullscreen back gesture',
+                        ),
                     config: BackGestureConfig(
                       swipeTransitionRange: GestureMeasurement.percentage(1),
                       //_kDroppedSwipePageAnimationDuration from CupertinoPageRoute
@@ -83,10 +85,11 @@ class HomePage extends StatelessWidget {
                   CustomBackGesturePageRoute(
                     parentTransitionBuilder:
                         const FadeForwardsPageTransitionsBuilder(),
-                    builder: (context) => const DemoPage(
-                      title: 'Custom swipe detection area',
-                      text: 'Swipe detection area: 20 pixels',
-                    ),
+                    builder:
+                        (context) => const DemoPage(
+                          title: 'Custom swipe detection area',
+                          text: 'Swipe detection area: 20 pixels',
+                        ),
                     config: BackGestureConfig(
                       swipeDetectionArea: GestureMeasurement.pixels(20),
                     ),
@@ -131,10 +134,11 @@ class _DemoPageState extends State<DemoPage> {
                 height: 48,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (_, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: Chip(label: Text('Chip N${index + 1}')),
-                  ),
+                  itemBuilder:
+                      (_, index) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Chip(label: Text('Chip N${index + 1}')),
+                      ),
                 ),
               ),
               ElevatedButton(
