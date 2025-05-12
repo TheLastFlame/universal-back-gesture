@@ -28,8 +28,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  final defaultConfig = const BackGestureConfig();
-
   late BackGestureConfig config = widget.config;
 
   void onConfigUpdate(BackGestureConfig newConfig) {
@@ -54,8 +52,8 @@ class _SettingsPageState extends State<SettingsPage> {
               config.copyWith(swipeTransitionRange: newMeasurement),
             );
           },
-          defaultPercentage: defaultConfig.swipeTransitionRange.value,
-          defaultPixels: defaultConfig.swipeTransitionRange.value * width,
+          defaultPercentage: widget.config.swipeTransitionRange.value,
+          defaultPixels: widget.config.swipeTransitionRange.value * width,
           pixelInputLabel: 'Transition Range (dp)',
           pixelStep: 10.0,
         ),
@@ -70,8 +68,8 @@ class _SettingsPageState extends State<SettingsPage> {
           onMeasurementChanged: (newMeasurement) {
             onConfigUpdate(config.copyWith(swipeDetectionArea: newMeasurement));
           },
-          defaultPercentage: defaultConfig.swipeDetectionArea.value,
-          defaultPixels: defaultConfig.swipeDetectionArea.value * width,
+          defaultPercentage: widget.config.swipeDetectionArea.value,
+          defaultPixels: widget.config.swipeDetectionArea.value * width,
           pixelInputLabel: 'Detection Area (dp)',
           pixelStep: 2.0,
         ),
@@ -86,7 +84,7 @@ class _SettingsPageState extends State<SettingsPage> {
           onChanged: (newValue) {
             onConfigUpdate(config.copyWith(swipeVelocityThreshold: newValue));
           },
-          defaultValueForInput: defaultConfig.swipeVelocityThreshold,
+          defaultValueForInput: widget.config.swipeVelocityThreshold,
           step: 100.0,
         ),
       ),
