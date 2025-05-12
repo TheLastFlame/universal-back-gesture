@@ -8,7 +8,7 @@ class DurationControl extends StatelessWidget {
     required this.value,
     required this.onChanged,
     this.step = 10.0,
-    this.defaultValueForInput = 800.0,
+    required this.defaultValueForInput,
   });
 
   final String label;

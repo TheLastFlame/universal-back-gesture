@@ -39,6 +39,18 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
+    final route = ModalRoute.of(context);
+    PageTransitionsBuilder? builder;
+
+    switch (route) {
+      case CustomBackGesturePageRoute():
+        builder = route.parentTransitionBuilder;
+      case InstantRouteReplacement():
+        builder = route.parentTransitionBuilder;
+      default:
+        builder = const FadeForwardsPageTransitionsBuilder();
+    }
+
     final List<Widget> children = [
       Tooltip(
         message:
@@ -119,7 +131,11 @@ class _SettingsPageState extends State<SettingsPage> {
           onChanged: (duration) {
             onConfigUpdate(config.copyWith(commitAnimationDuration: duration));
           },
-          step: 100.0,
+          defaultValueForInput:
+              (widget.config.cancelAnimationDuration?.inMilliseconds ??
+                      builder.transitionDuration.inMilliseconds)
+                  .toDouble(),
+          step: 50.0,
         ),
       ),
       Tooltip(
@@ -144,7 +160,12 @@ class _SettingsPageState extends State<SettingsPage> {
           onChanged: (duration) {
             onConfigUpdate(config.copyWith(cancelAnimationDuration: duration));
           },
-          step: 100.0,
+          defaultValueForInput:
+              (widget.config.cancelAnimationDuration?.inMilliseconds ??
+                      widget.config.cancelAnimationDuration?.inMilliseconds ??
+                      builder.transitionDuration.inMilliseconds)
+                  .toDouble(),
+          step: 50.0,
         ),
       ),
       Align(
@@ -160,18 +181,6 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     ];
-
-    final route = ModalRoute.of(context);
-    PageTransitionsBuilder? builder;
-
-    switch (route) {
-      case CustomBackGesturePageRoute():
-        builder = route.parentTransitionBuilder;
-      case InstantRouteReplacement():
-        builder = route.parentTransitionBuilder;
-      default:
-        builder = const FadeForwardsPageTransitionsBuilder();
-    }
 
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
