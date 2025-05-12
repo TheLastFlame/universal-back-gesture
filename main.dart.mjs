@@ -428,6 +428,7 @@ class CompiledApp {
       _1319: (s, p, i) => s.lastIndexOf(p, i),
       _1320: (string, token) => string.split(token),
       _1321: Object.is,
+      _1322: (a, i) => a.push(i),
       _1326: a => a.pop(),
       _1327: (a, i) => a.splice(i, 1),
       _1328: (a, s) => a.join(s),
@@ -478,8 +479,12 @@ class CompiledApp {
       _1390: (ms, c) =>
       setTimeout(() => dartInstance.exports.$invokeCallback(c),ms),
       _1391: (handle) => clearTimeout(handle),
+      _1392: (ms, c) =>
+      setInterval(() => dartInstance.exports.$invokeCallback(c), ms),
+      _1393: (handle) => clearInterval(handle),
       _1394: (c) =>
       queueMicrotask(() => dartInstance.exports.$invokeCallback(c)),
+      _1395: () => Date.now(),
       _1400: o => Object.keys(o),
       _1401: (s, m) => {
         try {
