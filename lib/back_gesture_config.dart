@@ -37,9 +37,8 @@ class BackGestureConfig {
   /// This controls the sensitivity of the drag.
   final GestureMeasurement swipeTransitionRange;
 
-  /// Defines the minimum swipe velocity required to trigger a full pop of the current route.
-  /// Can be specified in pixels or as a percentage of the screen width.
-  final GestureMeasurement swipeVelocityThreshold;
+  /// Defines the minimum swipe velocity (in dp/s) required to trigger a full pop of the current route.
+  final double swipeVelocityThreshold;
 
   /// Defines the animation progress (0.0 to 1.0) at which the back gesture
   /// will complete and pop the current route, even if swipe velocity is low.
@@ -75,7 +74,7 @@ class BackGestureConfig {
   const BackGestureConfig({
     this.swipeDetectionArea = const GestureMeasurement.percentage(1),
     this.swipeTransitionRange = const GestureMeasurement.percentage(0.4),
-    this.swipeVelocityThreshold = const GestureMeasurement.pixels(1100),
+    this.swipeVelocityThreshold = 1100,
     this.animationProgressCompleteThreshold = 0.5,
     this.commitAnimationCurve = Curves.fastEaseInToSlowEaseOut,
     this.commitAnimationDuration,

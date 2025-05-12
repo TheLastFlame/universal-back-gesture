@@ -133,9 +133,7 @@ class __BackGestureWrapperState extends State<_BackGestureWrapper> {
     final AnimationController controller = widget.route.controller!;
     final NavigatorState navigator = widget.route.navigator!;
 
-    final double minimumVelocity = widget.config.swipeVelocityThreshold.resolve(
-      context,
-    );
+    final double minimumVelocity = widget.config.swipeVelocityThreshold;
 
     final bool commit = velocity.abs() >= minimumVelocity
         // Commit if velocity is positive and exceeds threshold
