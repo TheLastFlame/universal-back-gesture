@@ -12,7 +12,7 @@
 
 ## Preview:
 
-![ezgif-217b0f283a5736](https://github.com/user-attachments/assets/c44d7bd1-c37f-440c-92cb-69f797b8fec0)
+![ezgif-217b0f283a5736](https://github.com/user-attachments/assets/4d4d97e0-801c-4445-a03c-64bbd34d4479)
 
 Онлайн демо: [https://thela.space/universal-back-gesture](https://thela.space/universal-back-gesture)
 
