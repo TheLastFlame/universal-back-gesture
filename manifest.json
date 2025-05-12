@@ -1,11 +1,11 @@
 {
-    "name": "example",
-    "short_name": "example",
+    "name": "Universal Back Gesture Example",
+    "short_name": "Universal Back Gesture ",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Interactive example app for universal_back_gesture package",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
