@@ -12,7 +12,7 @@ Allows customization of the screen area for gesture initiation, swipe distance a
 
 ## Preview:
 
-![ezgif-217b0f283a5736](https://github.com/user-attachments/assets/c44d7bd1-c37f-440c-92cb-69f797b8fec0)
+![ezgif-217b0f283a5736](https://github.com/user-attachments/assets/ea57b77c-f49c-4281-9ce5-2d9b5976f911)
 
 Online demo: [https://thela.space/universal-back-gesture](https://thela.space/universal-back-gesture)
 
