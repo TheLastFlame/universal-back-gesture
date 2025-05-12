@@ -22,6 +22,7 @@ class _MainAppState extends State<MainApp> {
           type == TransitionType.cupertino
               ? BackGestureConfig(
                 swipeTransitionRange: GestureMeasurement.percentage(1),
+                commitAnimationDuration: const Duration(milliseconds: 350),
               )
               : BackGestureConfig(),
   };
