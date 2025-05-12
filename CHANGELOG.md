@@ -1,3 +1,7 @@
+## 2.0.1
+
+* Update README
+
 ## 2.0.0
 
 * Breaking Change: swipeVelocityThreshold is now double instead of GestureMeasurement (since setting swipe speed as a percentage of screen width doesn't make sense)
