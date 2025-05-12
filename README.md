@@ -18,7 +18,10 @@ Online demo: [https://thelastflame.github.io/universal-back-gesture](https://the
 
 ## Installation
 
-Run the command `flutter pub add universal_back_gesture`.
+Run the command 
+``` 
+flutter pub add universal_back_gesture
+```
 
 ## Usage
 
