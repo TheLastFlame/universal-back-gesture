@@ -1,4 +1,3 @@
-
 # Universal Back Gesture 
 
 [![Pub Version](https://img.shields.io/pub/v/universal_back_gesture?label=pub.dev)](https://pub.dev/packages/universal_back_gesture)
@@ -13,9 +12,9 @@
 
 ## Preview:
 
-![ezgif-157720150ac8c3](https://github.com/user-attachments/assets/7221c5e9-399c-4bda-9f57-f63b8ba7ce1d)
+![ezgif-217b0f283a5736](https://github.com/user-attachments/assets/c44d7bd1-c37f-440c-92cb-69f797b8fec0)
 
-Онлайн демо: [https://thelastflame.github.io/universal-back-gesture](https://thelastflame.github.io/universal-back-gesture)
+Онлайн демо: [https://thela.space/universal-back-gesture](https://thela.space/universal-back-gesture)
 
 ## Установка
 
@@ -182,3 +181,7 @@ const BackGestureConfig(
 ## Лицензия
 
 Этот проект лицензирован на условиях лицензии MIT - см. файл [LICENSE](LICENSE) для подробностей.
+
+## Keywords
+
+swipe back, edge swipe, custom transitions, page transitions, interactive pop, pop gesture, customizable gesture, iOS back gesture, Android back gesture, fullscreen back gesture

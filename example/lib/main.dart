@@ -1,3 +1,5 @@
+// This is a simple single-file example for quick startup. You can find an interactive version in the repository
+
 import 'package:flutter/material.dart';
 import 'package:universal_back_gesture/universal_back_gesture.dart';
 
@@ -78,25 +80,6 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: const Text('Cupertino fullscreen back gesture'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  CustomBackGesturePageRoute(
-                    parentTransitionBuilder:
-                        const FadeForwardsPageTransitionsBuilder(),
-                    builder:
-                        (context) => const DemoPage(
-                          title: 'Custom swipe detection area',
-                          text: 'Swipe detection area: 20 pixels',
-                        ),
-                    config: BackGestureConfig(
-                      swipeDetectionArea: GestureMeasurement.pixels(20),
-                    ),
-                  ),
-                );
-              },
-              child: const Text('Custom swipe detection area'),
             ),
           ],
         ),

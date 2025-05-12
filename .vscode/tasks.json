@@ -10,7 +10,7 @@
             "args": [
                 "--wasm",
                 "--extra-args",
-                "--base-href=/universal-back-gesture/"
+                "--base-href=/universal-back-gesture/ -t lib/interactive/main.dart",
             ],
             "options": {
                 "cwd": "${workspaceFolder}/example"

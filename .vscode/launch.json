@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Interactive",
+            "cwd": "example",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/interactive/main.dart",
+            "flutterMode": "debug"
+        },
+        {
+            "name": "Basic",
+            "cwd": "example",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "flutterMode": "debug"
+        }
+    ]
+}
