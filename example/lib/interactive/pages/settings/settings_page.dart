@@ -40,7 +40,7 @@ class _SettingsPageState extends State<SettingsPage> {
     final width = MediaQuery.of(context).size.width;
 
     final route = ModalRoute.of(context);
-    PageTransitionsBuilder? builder;
+    PageTransitionsBuilder builder;
 
     switch (route) {
       case CustomBackGesturePageRoute():
@@ -195,10 +195,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   (context) => SettingsPage(
                     title: widget.title,
                     config: config,
-                    onConfigUpdate: onConfigUpdate,
+                    onConfigUpdate: widget.onConfigUpdate,
                   ),
               config: config,
-              parentTransitionBuilder: builder!,
+              parentTransitionBuilder: builder,
             ),
           );
         },
