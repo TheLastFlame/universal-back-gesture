@@ -3,7 +3,7 @@
 [![Pub Version](https://img.shields.io/pub/v/universal_back_gesture?label=pub.dev)](https://pub.dev/packages/universal_back_gesture)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[Русская версия](README_RU.md)
+[Русская версия](https://github.com/TheLastFlame/universal-back-gesture/blob/master/README_RU.md)
 
 #### A universal, highly customizable back gesture for any custom page transitions.
 Allows customization of the screen area for gesture initiation, swipe distance and velocity required for transition completion, distance for full animation completion, as well as curves and durations for commit and cancel animations.
