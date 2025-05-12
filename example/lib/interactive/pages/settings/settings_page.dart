@@ -132,7 +132,7 @@ class _SettingsPageState extends State<SettingsPage> {
             onConfigUpdate(config.copyWith(commitAnimationDuration: duration));
           },
           defaultValueForInput:
-              (widget.config.cancelAnimationDuration?.inMilliseconds ??
+              (widget.config.commitAnimationDuration?.inMilliseconds ??
                       builder.transitionDuration.inMilliseconds)
                   .toDouble(),
           step: 50.0,
@@ -162,7 +162,7 @@ class _SettingsPageState extends State<SettingsPage> {
           },
           defaultValueForInput:
               (widget.config.cancelAnimationDuration?.inMilliseconds ??
-                      widget.config.cancelAnimationDuration?.inMilliseconds ??
+                      widget.config.commitAnimationDuration?.inMilliseconds ??
                       builder.transitionDuration.inMilliseconds)
                   .toDouble(),
           step: 50.0,
@@ -174,7 +174,7 @@ class _SettingsPageState extends State<SettingsPage> {
           message: 'Reset all settings to their default values',
           child: FilledButton(
             onPressed: () {
-              onConfigUpdate(BackGestureConfig());
+              onConfigUpdate(widget.config);
             },
             child: Text('Reset'),
           ),
