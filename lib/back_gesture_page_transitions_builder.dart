@@ -11,11 +11,15 @@ class BackGesturePageTransitionsBuilder extends PageTransitionsBuilder {
     /// Allows you to override the transition animation duration. By default, it uses the duration of the parent transition animation.
     this.transitionDurationOverride,
 
+    /// Allows you to override the reverse transition animation duration. By default, it uses the duration of the parent transition animation.
+    this.reverseTransitionDurationOverride,
+
     /// The gesture configuration.
     this.config = const BackGestureConfig(),
   });
 
   final Duration? transitionDurationOverride;
+  final Duration? reverseTransitionDurationOverride;
   final PageTransitionsBuilder parentTransitionBuilder;
 
   final BackGestureConfig config;
@@ -23,6 +27,11 @@ class BackGesturePageTransitionsBuilder extends PageTransitionsBuilder {
   @override
   Duration get transitionDuration =>
       transitionDurationOverride ?? parentTransitionBuilder.transitionDuration;
+
+  @override
+  Duration get reverseTransitionDuration =>
+      reverseTransitionDurationOverride ??
+      parentTransitionBuilder.reverseTransitionDuration;
 
   @override
   Widget buildTransitions<T>(
@@ -142,9 +151,10 @@ class __BackGestureWrapperState extends State<_BackGestureWrapper> {
         : (1 - controller.value) >=
             widget.config.animationProgressCompleteThreshold;
 
-    final Duration routeTransitionDuration = widget.route.transitionDuration;
+    final Duration reverseTransitionDuration =
+        widget.route.reverseTransitionDuration;
     final Duration commitAnimationDuration =
-        widget.config.commitAnimationDuration ?? routeTransitionDuration;
+        widget.config.commitAnimationDuration ?? reverseTransitionDuration;
 
     if (commit) {
       // Only pop if the route is still the current one.

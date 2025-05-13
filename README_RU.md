@@ -59,16 +59,28 @@ MaterialApp(
 import 'package:flutter/material.dart';
 import 'package:universal_back_gesture/universal_back_gesture.dart';
 
-class CustomRouteWithBackGesture<T> extends MaterialPageRoute<T> {
-  CustomRouteWithBackGesture({
-    required super.builder,
-    super.settings,
-    this.parentTransitionBuilder = const CupertinoPageTransitionsBuilder(),
-    this.config = const BackGestureConfig(),
-  });
+class CustomBackGesturePageRoute<T> extends MaterialPageRoute<T> {
+  final BackGestureConfig config;
 
   final PageTransitionsBuilder parentTransitionBuilder;
-  final BackGestureConfig config;
+
+  CustomBackGesturePageRoute({
+    required super.builder,
+    required this.config,
+    required this.parentTransitionBuilder,
+    super.settings,
+  });
+
+  @override
+  Duration get transitionDuration => parentTransitionBuilder.transitionDuration;
+
+  @override
+  Duration get reverseTransitionDuration =>
+      parentTransitionBuilder.reverseTransitionDuration;
+
+  @override
+  DelegatedTransitionBuilder? get delegatedTransition =>
+      parentTransitionBuilder.delegatedTransition;
 
   @override
   Widget buildTransitions(
@@ -153,16 +165,16 @@ GoRoute(
 
 Класс `BackGestureConfig` позволяет точно настроить поведение жеста назад:
 
-| Параметр                           | Тип                                | По умолчанию                                     | Описание                                                                                                                                    |
-| :--------------------------------- | :--------------------------------- | :--------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| `swipeDetectionArea`               | `GestureMeasurement`               | `GestureMeasurement.percentage(1)` (Вся ширина) | Ширина области края экрана, где может быть инициирован жест. Может быть `.pixels(double)` или `.percentage(double)`.                        |
-| `swipeTransitionRange`             | `GestureMeasurement`               | `GestureMeasurement.percentage(0.4)` (40% ширины) | Горизонтальное расстояние смахивания, необходимое для анимации перехода страницы от начала (полностью видима) до конца (полностью скрыта). |
-| `swipeVelocityThreshold`           | `GestureMeasurement`               | `GestureMeasurement.pixels(1100)`              | Минимальная скорость смахивания (пикселей/секунду), необходимая для полного закрытия текущего маршрута. Может быть `.pixels(double)` или `.percentage(double)`. |
-| `animationProgressCompleteThreshold` | `double`                           | `0.5`                                          | Прогресс анимации (от 0.0 до 1.0), при котором жест "назад" завершится и закроет маршрут, даже если скорость смахивания низкая.             |
-| `commitAnimationCurve`             | `Curve`                            | `Curves.fastEaseInToSlowEaseOut`               | Кривая для анимации подтверждения (когда жест успешно закрывает страницу).                                                               |
-| `commitAnimationDuration`          | `Duration?`                        | `null` (использует длительность перехода маршрута) | Длительность анимации подтверждения.                                                                                                      |
-| `cancelAnimationCurve`             | `Curve`                            | `Curves.fastOutSlowIn`                         | Кривая для анимации отмены (когда жест отменяется).                                                                                     |
-| `cancelAnimationDuration`          | `Duration?`                        | `null` (использует `commitAnimationDuration`)  | Длительность анимации отмены.                                                                                                             |
+| Параметр                             | Описание                                                                                                                                   | Тип                                | По умолчанию                                    |
+| :----------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------- | :---------------------------------------------- |
+| `swipeDetectionArea`                 | Ширина области края экрана, где может быть инициирован жест. Может быть `.pixels(double)` или `.percentage(double)`.                       | `GestureMeasurement`               | `GestureMeasurement.percentage(1)` (Вся ширина) |
+| `swipeTransitionRange`               | Горизонтальное расстояние смахивания, необходимое для анимации перехода страницы от начала (полностью видима) до конца (полностью скрыта). | `GestureMeasurement`               | `GestureMeasurement.pixels(150)`                |
+| `swipeVelocityThreshold`             | Минимальная скорость смахивания (пикселей/секунду), необходимая для полного закрытия текущего маршрута.                                    | `GestureMeasurement`               | `GestureMeasurement.pixels(1100)`               |
+| `animationProgressCompleteThreshold` | Прогресс анимации (от 0.0 до 1.0), при котором жест "назад" завершится и закроет маршрут, даже если скорость смахивания низкая.            | `double`                           | `0.5`                                           |
+| `commitAnimationCurve`               | Кривая для анимации подтверждения (когда жест успешно закрывает страницу).                                                                 | `Curve`                            | `Curves.fastEaseInToSlowEaseOut`                |
+| `commitAnimationDuration`            | Длительность анимации подтверждения.                                                                                                       | `Duration?`                        | `null` (использует reverseTransitionDuration)   |
+| `cancelAnimationCurve`               | Кривая для анимации отмены (когда жест отменяется).                                                                                        | `Curve`                            | `Curves.fastOutSlowIn`                          |
+| `cancelAnimationDuration`            | Длительность анимации отмены.                                                                                                              | `Duration?`                        | `null`                                          |
 
 ### `GestureMeasurement`
 

@@ -1,3 +1,9 @@
+## 2.1.0
+
+* Added ability to override reverseTransitionDuration
+* commitAnimationDuration now uses reverseTransitionDuration as default value
+* Changed default value for swipeTransitionRange from 40% of screen width to 150dp (for most transition builders, binding to screen width for gesture is wrong)
+
 ## 2.0.1
 
 * Update README

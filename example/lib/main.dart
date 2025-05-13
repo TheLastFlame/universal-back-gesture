@@ -156,6 +156,10 @@ class CustomBackGesturePageRoute<T> extends MaterialPageRoute<T> {
   Duration get transitionDuration => parentTransitionBuilder.transitionDuration;
 
   @override
+  Duration get reverseTransitionDuration =>
+      parentTransitionBuilder.reverseTransitionDuration;
+
+  @override
   DelegatedTransitionBuilder? get delegatedTransition =>
       parentTransitionBuilder.delegatedTransition;
 

@@ -48,7 +48,7 @@ class BackGestureConfig {
   final Curve commitAnimationCurve;
 
   /// The duration of the commit animation.
-  /// If null, the default duration of the route's transition will be used.
+  /// If null, the reverseDuration of the route's transition will be used.
   final Duration? commitAnimationDuration;
 
   /// Defines the curve to use for the cancel animation when the gesture is cancelled.
@@ -70,10 +70,11 @@ class BackGestureConfig {
   /// which the back gesture will complete and pop the current route.
   /// [commitAnimationCurve] is the curve to use for the commit animation.
   /// [commitAnimationDuration] is the duration of the commit animation.
-
+  /// [cancelAnimationCurve] is the curve to use for the cancel animation.
+  /// [cancelAnimationDuration] is the duration of the cancel animation.
   const BackGestureConfig({
     this.swipeDetectionArea = const GestureMeasurement.percentage(1),
-    this.swipeTransitionRange = const GestureMeasurement.percentage(0.4),
+    this.swipeTransitionRange = const GestureMeasurement.pixels(150),
     this.swipeVelocityThreshold = 1100,
     this.animationProgressCompleteThreshold = 0.5,
     this.commitAnimationCurve = Curves.fastEaseInToSlowEaseOut,

@@ -59,16 +59,28 @@ First, create a custom `PageRoute`:
 import 'package:flutter/material.dart';
 import 'package:universal_back_gesture/universal_back_gesture.dart';
 
-class CustomRouteWithBackGesture<T> extends MaterialPageRoute<T> {
-  CustomRouteWithBackGesture({
-    required super.builder,
-    super.settings,
-    this.parentTransitionBuilder = const CupertinoPageTransitionsBuilder(),
-    this.config = const BackGestureConfig(),
-  });
+class CustomBackGesturePageRoute<T> extends MaterialPageRoute<T> {
+  final BackGestureConfig config;
 
   final PageTransitionsBuilder parentTransitionBuilder;
-  final BackGestureConfig config;
+
+  CustomBackGesturePageRoute({
+    required super.builder,
+    required this.config,
+    required this.parentTransitionBuilder,
+    super.settings,
+  });
+
+  @override
+  Duration get transitionDuration => parentTransitionBuilder.transitionDuration;
+
+  @override
+  Duration get reverseTransitionDuration =>
+      parentTransitionBuilder.reverseTransitionDuration;
+
+  @override
+  DelegatedTransitionBuilder? get delegatedTransition =>
+      parentTransitionBuilder.delegatedTransition;
 
   @override
   Widget buildTransitions(
@@ -153,16 +165,17 @@ GoRoute(
 
 The `BackGestureConfig` class allows you to fine-tune the behavior of the back gesture:
 
-| Parameter                          | Type                               | Default                                        | Description                                                                                                                               |
-| :--------------------------------- | :--------------------------------- | :--------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| `swipeDetectionArea`               | `GestureMeasurement`               | `GestureMeasurement.percentage(1)` (Full width) | Width of the screen edge area where the gesture can be initiated. Can be `.pixels(double)` or `.percentage(double)`.                     |
-| `swipeTransitionRange`             | `GestureMeasurement`               | `GestureMeasurement.percentage(0.4)` (40% width)| Horizontal swipe distance required to animate the page transition from start (fully visible) to end (fully hidden).                   |
-| `swipeVelocityThreshold`           | `GestureMeasurement`               | `GestureMeasurement.pixels(1100)`              | Minimum swipe velocity (pixels/second) required to fully close the current route. Can be `.pixels(double)` or `.percentage(double)`.    |
-| `animationProgressCompleteThreshold` | `double`                           | `0.5`                                          | Animation progress (from 0.0 to 1.0) at which the back gesture will complete and close the route, even if the swipe velocity is low.        |
-| `commitAnimationCurve`             | `Curve`                            | `Curves.fastEaseInToSlowEaseOut`               | Curve for the commit animation (when the gesture successfully closes the page).                                                            |
-| `commitAnimationDuration`          | `Duration?`                        | `null` (uses route transition duration)        | Duration of the commit animation.                                                                                                         |
-| `cancelAnimationCurve`             | `Curve`                            | `Curves.fastOutSlowIn`                         | Curve for the cancel animation (when the gesture is canceled).                                                                          |
-| `cancelAnimationDuration`          | `Duration?`                        | `null` (uses `commitAnimationDuration`)        | Duration of the cancel animation.                                                                                                         |
+| Parameter | Description | Type | Default |
+| :----------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------- | :---------------------------------------------- |
+| `swipeDetectionArea`                 | The width of the area of the screen edge where the gesture can be initiated. Can be `.pixels(double)` or `.percentage(double)`.            | `GestureMeasurement`               | `GestureMeasurement.percentage(1)` (All width)  | 
+| `swipeTransitionRange`               | The horizontal swipe distance required to animate the page transition from the beginning (fully visible) to the end (fully hidden).        | `GestureMeasurement`               | `GestureMeasurement.pixels(150)`                |
+| `swipeVelocityThreshold`             | The minimum swipe speed (pixels/second) required to completely close the current route.                                                    | `GestureMeasurement`               | `GestureMeasurement.pixels(1100)`               |
+| `animationProgressCompleteThreshold` | The animation progress (from 0.0 to 1.0) at which the back gesture will complete and close the route, even if the swipe speed is low.      | `double`                           | `0.5`                                           |
+| `commitAnimationCurve`               | A curve for the confirmation animation (when the gesture successfully closes the page).                                                    | `Curve`                            | `Curves.fastEaseInToSlowEaseOut`                |
+| `commitAnimationDuration`            | Duration of the confirmation animation.                                                                                                    | `Duration?`                        | `null` (uses reverseTransitionDuration)         |
+| `cancelAnimationCurve`               | A curve for the cancel animation (when the gesture is canceled).                                                                           | `Curve`                            | `Curves.fastOutSlowIn`                          |
+| `cancelAnimationDuration`            | Duration of the cancel animation.                                                                                                          | `Duration?`                        | `null`                                          |
+
 
 ### `GestureMeasurement`
 
